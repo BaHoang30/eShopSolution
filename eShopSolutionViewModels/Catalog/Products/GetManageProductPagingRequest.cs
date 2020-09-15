@@ -1,9 +1,9 @@
-﻿using eShopSolution.Aplication.Dtos;
+﻿using eShopSolutionViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShopSolution.Aplication.Catalog.Products.Dtos
+namespace eShopSolutionViewModels.Catalog.Products
 {
     public class GetManageProductPagingRequest : PagingRequestBase
     {
