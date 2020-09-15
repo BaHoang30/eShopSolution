@@ -180,7 +180,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "b2ead4bc-5f03-4fda-98e6-714e9d3149e1",
+                            ConcurrencyStamp = "3d304a40-d622-489d-ba05-9cc72e4a6ef3",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -257,7 +257,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da598c28-a58d-40f0-97d5-c8815bbb02f9",
+                            ConcurrencyStamp = "50de9034-390e-460e-9287-4b003d6366e4",
                             Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "adminl@gmail.com",
                             EmailConfirmed = true,
@@ -266,7 +266,7 @@ namespace eShopSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOQH5g16zmOcqindgBsLlof0y+Ki21PCI/sa0p3KmQpwzBBg+xiZCmTOTwDhXDC9dw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPIMRHriJsqiEBRa/WNnivMQqXtNRhun/TY5uHDG1psEOUij3nP9cjqaNfehaN5Lcg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -518,7 +518,9 @@ namespace eShopSolution.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2020, 9, 12, 14, 41, 5, 654, DateTimeKind.Local).AddTicks(3403));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -611,52 +613,12 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2020, 9, 14, 16, 20, 57, 196, DateTimeKind.Local).AddTicks(9782),
+                            DateCreated = new DateTime(2020, 9, 12, 14, 41, 5, 679, DateTimeKind.Local).AddTicks(828),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
                             ViewCount = 0
                         });
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entity.ProductImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Caption")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("FileSize")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<bool>("IsDefault")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entity.ProductInCategory", b =>
@@ -891,15 +853,6 @@ namespace eShopSolution.Data.Migrations
 
                     b.HasOne("eShopSolution.Data.Entity.Product", "Product")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entity.ProductImage", b =>
-                {
-                    b.HasOne("eShopSolution.Data.Entity.Product", "Product")
-                        .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
