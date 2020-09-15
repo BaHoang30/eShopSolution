@@ -15,6 +15,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.Aplication", "eShopSolution.Aplication\eShopSolution.Aplication.csproj", "{5433E7BC-F6AA-425D-8137-D0D808D2CECE}"
 
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aShopSolution.BackendApi", "aShopSolution.BackendApi\aShopSolution.BackendApi.csproj", "{35E2635A-C52A-4B5A-B873-9844269D0523}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
