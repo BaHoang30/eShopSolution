@@ -102,8 +102,8 @@ namespace eShopSolution.Aplication.Catalog.Products
 
 
             //2. filter
-            if (!string.IsNullOrEmpty(request.keyword))
-                query = query.Where(x => x.pt.Name.Contains(request.keyword));
+            if (!string.IsNullOrEmpty(request.Keyword))
+                query = query.Where(x => x.pt.Name.Contains(request.Keyword));
 
             if (request.CategoryIds.Count > 0)
             {
