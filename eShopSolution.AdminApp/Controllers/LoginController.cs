@@ -60,7 +60,7 @@ namespace eShopSolution.AdminApp.Controllers
                 IsPersistent = false
             };
             //HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId, _configuration[SystemConstants.AppSettings.DefaultLanguageId]);
-            //HttpContext.Session.SetString(SystemConstants.AppSettings.Token, result.ResultObj);
+            HttpContext.Session.SetString("Token", token);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
@@ -72,7 +72,7 @@ namespace eShopSolution.AdminApp.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            //HttpContext.Session.Remove("Token");
+            HttpContext.Session.Remove("Token");
             return RedirectToAction("Index", "Login");
         } 
         private ClaimsPrincipal ValidateToken(string jwtToken)

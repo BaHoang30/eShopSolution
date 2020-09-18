@@ -101,7 +101,7 @@ namespace eShopSolution.Aplication.System.Users
             return new ApiSuccessResult<UserVm>(userVm);
         }
 
-        public async Task<ApiResult<PagedResult<UserVm>>> GetUsersPaging(GetUserPagingRequest request)
+        public async Task<PagedResult<UserVm>> GetUsersPaging(GetUserPagingRequest request)
         {
             var query = _userManager.Users;
             if (!string.IsNullOrEmpty(request.Keyword))
@@ -129,11 +129,11 @@ namespace eShopSolution.Aplication.System.Users
             var pagedResult = new PagedResult<UserVm>()
             {
                 TotalRecords = totalRow,
-                PageIndex = request.PageIndex,
-                PageSize = request.PageSize,
+                //PageIndex = request.PageIndex,
+                //PageSize = request.PageSize,
                 Items = data
             };
-            return new ApiSuccessResult<PagedResult<UserVm>>(pagedResult);
+            return pagedResult;
         }
 
         public async Task<ApiResult<bool>> Register(RegisterRequest request)

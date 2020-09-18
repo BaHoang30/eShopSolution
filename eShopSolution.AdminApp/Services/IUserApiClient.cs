@@ -1,4 +1,5 @@
-﻿using eShopSolutionViewModels.System.Users;
+﻿using eShopSolutionViewModels.Common;
+using eShopSolutionViewModels.System.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace eShopSolution.AdminApp.Services
     public interface IUserApiClient
     {
         Task<string> Authenticate(LoginRequest request);
+        Task<PagedResult<UserVm>> GetUsersPagings(GetUserPagingRequest request);
     }
 }

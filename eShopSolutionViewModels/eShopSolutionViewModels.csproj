@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="System\Languages\**" />
+    <Compile Remove="System\Roles\**" />
+    <EmbeddedResource Remove="System\Languages\**" />
+    <EmbeddedResource Remove="System\Roles\**" />
+    <None Remove="System\Languages\**" />
+    <None Remove="System\Roles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="9.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.8" />
     <PackageReference Include="Wlniao.XCore" Version="3.0.6" />
@@ -12,11 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eShopSolution.Data\eShopSolution.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="System\Languages\" />
-    <Folder Include="System\Roles\" />
   </ItemGroup>
 
 </Project>

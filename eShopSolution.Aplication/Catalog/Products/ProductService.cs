@@ -18,11 +18,11 @@ using Wlniao;
 
 namespace eShopSolution.Aplication.Catalog.Products
 {
-    public class ManageProductService : IManageProductService
+    public class ProductService : IProductService
     {
         private readonly EShopDbContext _context;
         private readonly IStorageService _storageService;
-        public ManageProductService(EShopDbContext context, IStorageService storageService)
+        public ProductService(EShopDbContext context, IStorageService storageService)
         {
             _context = context;
             _storageService = storageService;
