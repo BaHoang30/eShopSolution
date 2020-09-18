@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace eShopSolution.AdminApp.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserApiClient _userApiClient;
         private readonly IConfiguration _configuration;
@@ -22,7 +22,6 @@ namespace eShopSolution.AdminApp.Controllers
         }
         public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 10)
         {
-            var user = User.Identity.Name;
             var sessions = HttpContext.Session.GetString("Token");
             var request = new GetUserPagingRequest()
             {
@@ -33,6 +32,29 @@ namespace eShopSolution.AdminApp.Controllers
             };
             var data = await _userApiClient.GetUsersPagings(request);
             return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(RegisterRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _userApiClient.RegisterUser(request);
+            if (result.IsSuccessed)
+            {
+                TempData["result"] = "Thêm mới người dùng thành công";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", result.Message);
+            return View(request);
         }
     }
 }

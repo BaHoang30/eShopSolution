@@ -122,7 +122,8 @@ namespace eShopSolution.Aplication.System.Users
                     UserName = x.UserName,
                     FirstName = x.FirstName,
                     Id = x.Id,
-                    LastName = x.LastName
+                    LastName = x.LastName,
+                    Dob=x.Dob
                 }).ToListAsync();
 
             //4. Select and projection
