@@ -17,7 +17,7 @@ namespace eShopSolutionViewModels.System.Users
         [DataType(DataType.Date)]
         public DateTime Dob { get; set; }
 
-        [Display(Name = "Hòm thư")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Display(Name = "Số điện thoại")]
