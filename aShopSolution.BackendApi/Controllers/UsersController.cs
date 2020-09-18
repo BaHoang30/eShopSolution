@@ -31,7 +31,7 @@ namespace aShopSolution.BackendApi.Controllers
 
             var result = await _userService.Authencate(request);
 
-            if (string.IsNullOrEmpty(result.ResultObj))
+            if (string.IsNullOrEmpty(result))
             {
                 return BadRequest(result);
             }
