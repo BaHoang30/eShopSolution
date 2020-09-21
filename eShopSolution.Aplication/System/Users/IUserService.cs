@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace eShopSolution.Aplication.System.Users
 {
-    public interface IUserService
+    public interface  IUserService
     {
-        Task<string> Authencate(LoginRequest request);
+        Task<ApiResult<string>> Authencate(LoginRequest request);
 
         Task<ApiResult<bool>> Register(RegisterRequest request);
 
         Task<ApiResult<bool>> Update(Guid id, UserUpdateRequest request);
 
-        Task<PagedResult<UserVm>> GetUsersPaging(GetUserPagingRequest request);
+        Task<ApiResult<PagedResult<UserVm>>> GetUsersPaging(GetUserPagingRequest request);
 
         Task<ApiResult<UserVm>> GetById(Guid id);
 
